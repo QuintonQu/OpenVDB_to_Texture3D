@@ -1,26 +1,41 @@
-//
-//  ViewController.m
-//  OpenVDB_to_Texture3D
-//
-//  Created by Ziyuan Qu on 2023/7/6.
-//
+/*
+See LICENSE folder for this sample’s licensing information.
+
+Abstract:
+Implementation of our cross-platform view controller
+*/
 
 #import "ViewController.h"
+#import "Renderer.h"
 
 @implementation ViewController
+{
+    MTKView *_view;
 
-- (void)viewDidLoad {
+    Renderer *_renderer;
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
-    // Do any additional setup after loading the view.
+    // Set the view to use the default device
+    _view = (MTKView *)self.view;
+    
+    _view.device = MTLCreateSystemDefaultDevice();
+    
+    NSLog(@"Selected Device: %@", _view.device.name);
+    
+    NSAssert(_view.device, @"Metal is not supported on this device");
+    
+    _renderer = [[Renderer alloc] initWithMetalKitView:_view];
+    
+    NSAssert(_renderer, @"Renderer failed initialization");
+
+    // Initialize our renderer with the view size
+    [_renderer mtkView:_view drawableSizeWillChange:_view.drawableSize];
+
+    _view.delegate = _renderer;
 }
-
-
-- (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
-
-    // Update the view, if already loaded.
-}
-
 
 @end

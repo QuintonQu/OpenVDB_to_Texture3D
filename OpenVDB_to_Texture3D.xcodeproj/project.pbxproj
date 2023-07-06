@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A9EAB5F2A57612200873B56 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB5E2A57612200873B56 /* AppDelegate.m */; };
 		5A9EAB622A57612200873B56 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB612A57612200873B56 /* ViewController.m */; };
 		5A9EAB642A57612600873B56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A9EAB632A57612600873B56 /* Assets.xcassets */; };
 		5A9EAB672A57612600873B56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9EAB652A57612600873B56 /* Main.storyboard */; };
 		5A9EAB692A57612600873B56 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB682A57612600873B56 /* main.m */; };
+		5A9EAB712A5762E900873B56 /* Renderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB702A5762E900873B56 /* Renderer.mm */; };
+		5A9EAB752A57634600873B56 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9EAB742A57634600873B56 /* MetalKit.framework */; };
+		5A9EAB782A57671F00873B56 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB772A57671F00873B56 /* Shaders.metal */; };
+		5A9EAB792A576B8800873B56 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB5E2A57612200873B56 /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,11 @@
 		5A9EAB662A57612600873B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A9EAB682A57612600873B56 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5A9EAB6A2A57612600873B56 /* OpenVDB_to_Texture3D.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenVDB_to_Texture3D.entitlements; sourceTree = "<group>"; };
+		5A9EAB702A5762E900873B56 /* Renderer.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = Renderer.mm; sourceTree = "<group>"; };
+		5A9EAB722A57631B00873B56 /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
+		5A9EAB742A57634600873B56 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		5A9EAB762A57653800873B56 /* ShaderType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderType.h; sourceTree = "<group>"; };
+		5A9EAB772A57671F00873B56 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9EAB752A57634600873B56 /* MetalKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,7 @@
 			children = (
 				5A9EAB5C2A57612200873B56 /* OpenVDB_to_Texture3D */,
 				5A9EAB5B2A57612200873B56 /* Products */,
+				5A9EAB732A57634500873B56 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,12 +70,24 @@
 				5A9EAB5E2A57612200873B56 /* AppDelegate.m */,
 				5A9EAB602A57612200873B56 /* ViewController.h */,
 				5A9EAB612A57612200873B56 /* ViewController.m */,
+				5A9EAB702A5762E900873B56 /* Renderer.mm */,
+				5A9EAB772A57671F00873B56 /* Shaders.metal */,
+				5A9EAB762A57653800873B56 /* ShaderType.h */,
+				5A9EAB722A57631B00873B56 /* Renderer.h */,
 				5A9EAB632A57612600873B56 /* Assets.xcassets */,
 				5A9EAB652A57612600873B56 /* Main.storyboard */,
 				5A9EAB682A57612600873B56 /* main.m */,
 				5A9EAB6A2A57612600873B56 /* OpenVDB_to_Texture3D.entitlements */,
 			);
 			path = OpenVDB_to_Texture3D;
+			sourceTree = "<group>";
+		};
+		5A9EAB732A57634500873B56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A9EAB742A57634600873B56 /* MetalKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +159,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9EAB792A576B8800873B56 /* AppDelegate.m in Sources */,
 				5A9EAB622A57612200873B56 /* ViewController.m in Sources */,
 				5A9EAB692A57612600873B56 /* main.m in Sources */,
-				5A9EAB5F2A57612200873B56 /* AppDelegate.m in Sources */,
+				5A9EAB712A5762E900873B56 /* Renderer.mm in Sources */,
+				5A9EAB782A57671F00873B56 /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +315,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "QuintonQ.OpenVDB-to-Texture3D";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -317,6 +342,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "QuintonQ.OpenVDB-to-Texture3D";
 				PRODUCT_NAME = "$(TARGET_NAME)";

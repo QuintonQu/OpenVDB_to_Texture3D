@@ -1,14 +1,19 @@
-//
-//  ViewController.h
-//  OpenVDB_to_Texture3D
-//
-//  Created by Ziyuan Qu on 2023/7/6.
-//
+/*
+See LICENSE folder for this sample’s licensing information.
 
-#import <Cocoa/Cocoa.h>
+Abstract:
+Header for our our cross-platform view controller
+*/
 
-@interface ViewController : NSViewController
 
+@import AppKit;
+#define PlatformViewController NSViewController
+
+@import MetalKit;
+
+#import "Renderer.h"
+
+// Our view controller
+@interface ViewController : PlatformViewController
 
 @end
-
