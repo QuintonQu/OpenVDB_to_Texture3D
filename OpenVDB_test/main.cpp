@@ -60,9 +60,11 @@ int main(int argc, const char * argv[]) {
             }
         }
     }
-    std::cout << *std::max_element(values.begin(),values.end()) << std::endl;
-    std::cout << *std::max_element(albedos.begin(),albedos.end()) << std::endl;
-    std::cout << *std::min_element(albedos.begin(),albedos.end()) << std::endl;
+    
+    std::cout << "vdb data extraction done!" << std::endl;
+//    std::cout << *std::max_element(values.begin(),values.end()) << std::endl;
+//    std::cout << *std::max_element(albedos.begin(),albedos.end()) << std::endl;
+//    std::cout << *std::min_element(albedos.begin(),albedos.end()) << std::endl;
     
     return 0;
 }

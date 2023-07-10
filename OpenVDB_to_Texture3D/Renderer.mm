@@ -9,6 +9,7 @@
 #import <simd/simd.h>
 #import <MetalKit/MetalKit.h>
 #import "ShaderType.h"
+#include <stdint.h>
 
 #include <openvdb/openvdb.h>
 #include <openvdb/tools/Interpolation.h>
@@ -32,12 +33,54 @@
     vector_uint2 _viewportSize;
     
     id<MTLTexture> _volumeTex;
+    
+    unsigned int _frameIndex;
+}
+
+uint16_t floatToHalf(float value)
+{
+    uint32_t bits = *(uint32_t *)&value;
+    uint32_t sign = (bits >> 31) & 0x1;
+    int32_t exponent = ((bits >> 23) & 0xFF) - 127;
+    uint32_t mantissa = bits & 0x7FFFFF;
+
+    if(exponent == 128)
+    {
+        // NaN or Infinity
+        exponent = 16;
+        mantissa >>= 13;
+    }
+    else if(exponent > 15)
+    {
+        // Overflow
+        return sign << 15 | 0x7C00;
+    }
+    else if(exponent > -15)
+    {
+        // Normalized number
+        exponent += 15;
+        mantissa >>= 13;
+    }
+    else if(exponent > -25)
+    {
+        // Subnormal number
+        mantissa |= 0x800000;
+        mantissa >>= -14 - exponent;
+        exponent = -15 + 1;
+    }
+    else
+    {
+        // Underflow
+        return sign << 15;
+    }
+
+    return sign << 15 | exponent << 10 | mantissa;
 }
 
 id<MTLTexture> createVolume(id<MTLDevice> device){
     openvdb::initialize();
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"cloud_01" ofType:@"vdb"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"bunny_cloud" ofType:@"vdb"];
     openvdb::io::File file([path UTF8String]);
 //    openvdb::io::File file("/Users/quinton/Documents/OpenVDB_to_Texture3D/model/bunny_cloud.vdb");
     file.open();
@@ -69,12 +112,16 @@ id<MTLTexture> createVolume(id<MTLDevice> device){
     int height = bbox.max().y() - bbox.min().y();
     int depth = bbox.max().z() - bbox.min().z();
 
-    float* values = (float*)malloc(sizeof(float) * width * height * depth * 4);
+    uint16_t* values = (uint16_t*)malloc(sizeof(uint16_t) * width * height * depth * 4);
     int value_index = 0;
-    for (int k = 0; k < depth; ++k) {
-        for (int j = 0; j < height; ++j) {
-            for (int i = 0; i < width; ++i) {
-                values[value_index] = accessor.getValue(openvdb::Coord(i, j, k));
+    for (int k = bbox.min().z(); k < bbox.max().z(); ++k) {
+        for (int j = bbox.min().y(); j < bbox.max().y(); ++j) {
+            for (int i = bbox.min().x(); i < bbox.max().x(); ++i) {
+                values[value_index] = (uint16_t) 0.0f;
+                values[value_index + 1] = (uint16_t) 0.0f;
+                values[value_index + 2] = (uint16_t) 0.0f;
+                values[value_index + 3] = floatToHalf(accessor.getValue(openvdb::Coord(i, j, k)));
+//                values[value_index + 3] = accessor.getValue(openvdb::Coord(i, j, k));
                 value_index += 4;
             }
         }
@@ -93,8 +140,8 @@ id<MTLTexture> createVolume(id<MTLDevice> device){
                mipmapLevel:	0
                      slice: 0
                  withBytes:values
-               bytesPerRow:sizeof(float) * width * 4
-             bytesPerImage:sizeof(float) * width * height * 4];
+               bytesPerRow:sizeof(uint16_t) * width * 4
+             bytesPerImage:sizeof(uint16_t) * width * height * 4];
     
     free(values);
     return texture;
@@ -152,13 +199,13 @@ id<MTLTexture> createVolume(id<MTLDevice> device){
 /// Called whenever the view needs to render a frame.
 - (void)drawInMTKView:(nonnull MTKView *)view
 {
-    static const AAPLVertex triangleVertices[] =
-    {
-        // 2D positions,    RGBA colors
-        { {  250,  -250 }, { 1, 0, 0, 1 } },
-        { { -250,  -250 }, { 0, 1, 0, 1 } },
-        { {    0,   250 }, { 0, 0, 1, 1 } },
-    };
+//    static const AAPLVertex triangleVertices[] =
+//    {
+//        // 2D positions,    RGBA colors
+//        { {  250,  -250 }, { 1, 0, 0, 1 } },
+//        { { -250,  -250 }, { 0, 1, 0, 1 } },
+//        { {    0,   250 }, { 0, 0, 1, 1 } },
+//    };
 
     // Create a new command buffer for each render pass to the current drawable.
     id<MTLCommandBuffer> commandBuffer = [_commandQueue commandBuffer];
@@ -178,20 +225,27 @@ id<MTLTexture> createVolume(id<MTLDevice> device){
         [renderEncoder setViewport:(MTLViewport){0.0, 0.0, static_cast<double>(_viewportSize.x), static_cast<double>(_viewportSize.y), 0.0, 1.0 }];
         
         [renderEncoder setRenderPipelineState:_pipelineState];
-
-        // Pass in the parameter data.
-        [renderEncoder setVertexBytes:triangleVertices
-                               length:sizeof(triangleVertices)
-                              atIndex:AAPLVertexInputIndexVertices];
         
-        [renderEncoder setVertexBytes:&_viewportSize
-                               length:sizeof(_viewportSize)
-                              atIndex:AAPLVertexInputIndexViewportSize];
+        // Pass the volume texture
+        [renderEncoder setFragmentTexture:_volumeTex atIndex:0];
+
+//        // Pass in the parameter data.
+//        [renderEncoder setVertexBytes:triangleVertices
+//                               length:sizeof(triangleVertices)
+//                              atIndex:AAPLVertexInputIndexVertices];
+//        
+//        [renderEncoder setVertexBytes:&_viewportSize
+//                               length:sizeof(_viewportSize)
+//                              atIndex:AAPLVertexInputIndexViewportSize];
+        
+        [renderEncoder setVertexBytes:&_frameIndex length:sizeof(unsigned int) atIndex:3];
+        
+        _frameIndex++;
 
         // Draw the triangle.
         [renderEncoder drawPrimitives:MTLPrimitiveTypeTriangle
                           vertexStart:0
-                          vertexCount:3];
+                          vertexCount:6];
 
         [renderEncoder endEncoding];
 
