@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A056B4B2AA51B6A0058EC91 /* libopenvdb.10.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8764522A587C2600B6253F /* libopenvdb.10.0.1.dylib */; };
 		5A18328D2A587FBA00FA1B75 /* bunny_cloud.vdb in Resources */ = {isa = PBXBuildFile; fileRef = 5A18328C2A587FBA00FA1B75 /* bunny_cloud.vdb */; };
-		5A33E24A2A588341009803C6 /* libopenvdb.10.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8764522A587C2600B6253F /* libopenvdb.10.0.1.dylib */; };
 		5A33E24C2A588518009803C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A33E24B2A588518009803C6 /* Foundation.framework */; };
 		5A33E24D2A588673009803C6 /* bunny_cloud.vdb in Resources */ = {isa = PBXBuildFile; fileRef = 5A18328C2A587FBA00FA1B75 /* bunny_cloud.vdb */; };
 		5A33E24E2A589296009803C6 /* libopenvdb.10.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8764522A587C2600B6253F /* libopenvdb.10.0.1.dylib */; };
@@ -18,6 +18,16 @@
 		5A33E2552A58B5D6009803C6 /* libtbb.12.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A33E2542A58B5D6009803C6 /* libtbb.12.9.dylib */; };
 		5A33E2562A58B5D6009803C6 /* libtbb.12.9.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 5A33E2542A58B5D6009803C6 /* libtbb.12.9.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		5A33E2572A58B5F9009803C6 /* libtbb.12.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A33E2542A58B5D6009803C6 /* libtbb.12.9.dylib */; };
+		5A6E4BDE2A65D408004D1218 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB5E2A57612200873B56 /* AppDelegate.m */; };
+		5A6E4BDF2A65D408004D1218 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB612A57612200873B56 /* ViewController.m */; };
+		5A6E4BE02A65D408004D1218 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB682A57612600873B56 /* main.m */; };
+		5A6E4BE12A65D408004D1218 /* Renderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB702A5762E900873B56 /* Renderer.mm */; };
+		5A6E4BE22A65D408004D1218 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB772A57671F00873B56 /* Shaders.metal */; };
+		5A6E4BE62A65D408004D1218 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9EAB742A57634600873B56 /* MetalKit.framework */; };
+		5A6E4BE82A65D408004D1218 /* bunny_cloud.vdb in Resources */ = {isa = PBXBuildFile; fileRef = 5A18328C2A587FBA00FA1B75 /* bunny_cloud.vdb */; };
+		5A6E4BE92A65D408004D1218 /* cloud_01.vdb in Resources */ = {isa = PBXBuildFile; fileRef = 5A33E2512A58B2BF009803C6 /* cloud_01.vdb */; };
+		5A6E4BEA2A65D408004D1218 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A9EAB632A57612600873B56 /* Assets.xcassets */; };
+		5A6E4BEB2A65D408004D1218 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9EAB652A57612600873B56 /* Main.storyboard */; };
 		5A875F912A586AF000B6253F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A875E842A5869E100B6253F /* main.cpp */; };
 		5A9EAB622A57612200873B56 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9EAB612A57612200873B56 /* ViewController.m */; };
 		5A9EAB642A57612600873B56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A9EAB632A57612600873B56 /* Assets.xcassets */; };
@@ -54,11 +64,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A056B4C2AA5263B0058EC91 /* npy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = npy.hpp; sourceTree = "<group>"; };
 		5A1832872A587EB100FA1B75 /* OpenVDB_test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenVDB_test.entitlements; sourceTree = "<group>"; };
 		5A18328C2A587FBA00FA1B75 /* bunny_cloud.vdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = bunny_cloud.vdb; sourceTree = "<group>"; };
 		5A33E24B2A588518009803C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5A33E2512A58B2BF009803C6 /* cloud_01.vdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = cloud_01.vdb; sourceTree = "<group>"; };
 		5A33E2542A58B5D6009803C6 /* libtbb.12.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtbb.12.9.dylib; path = ../../../../usr/local/Cellar/tbb/2021.9.0/lib/libtbb.12.9.dylib; sourceTree = "<group>"; };
+		5A6E4BF22A65D408004D1218 /* OpenVDB_to_Texture3D copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenVDB_to_Texture3D copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A6E4BF32A65D448004D1218 /* libtbb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtbb.a; path = ../../../../usr/local/Cellar/tbb/2021.9.0/lib/libtbb.a; sourceTree = "<group>"; };
+		5A6E4BF42A65D462004D1218 /* libopenvdb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenvdb.a; path = ../../../../usr/local/Cellar/openvdb/10.0.1_1/lib/libopenvdb.a; sourceTree = "<group>"; };
+		5A6E4BF72A65D8D0004D1218 /* libboost_iostreams.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_iostreams.a; path = ../../../../usr/local/Cellar/boost/1.81.0_1/lib/libboost_iostreams.a; sourceTree = "<group>"; };
+		5A6E4BF92A65D8F1004D1218 /* libblosc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libblosc.a; path = "../../../../usr/local/Cellar/c-blosc/1.21.3/lib/libblosc.a"; sourceTree = "<group>"; };
 		5A875E822A5869E100B6253F /* OpenVDB_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenVDB_test; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A875E842A5869E100B6253F /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = main.cpp; sourceTree = "<group>"; };
 		5A8764522A587C2600B6253F /* libopenvdb.10.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenvdb.10.0.1.dylib; path = ../../../../usr/local/lib/libopenvdb.10.0.1.dylib; sourceTree = "<group>"; };
@@ -80,13 +96,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5A6E4BE32A65D408004D1218 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A6E4BE62A65D408004D1218 /* MetalKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5A875E7F2A5869E100B6253F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A056B4B2AA51B6A0058EC91 /* libopenvdb.10.0.1.dylib in Frameworks */,
 				5A33E2572A58B5F9009803C6 /* libtbb.12.9.dylib in Frameworks */,
 				5A33E24C2A588518009803C6 /* Foundation.framework in Frameworks */,
-				5A33E24A2A588341009803C6 /* libopenvdb.10.0.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +139,7 @@
 		5A875E832A5869E100B6253F /* OpenVDB_test */ = {
 			isa = PBXGroup;
 			children = (
+				5A056B4C2AA5263B0058EC91 /* npy.hpp */,
 				5A1832872A587EB100FA1B75 /* OpenVDB_test.entitlements */,
 				5A875E842A5869E100B6253F /* main.cpp */,
 			);
@@ -137,6 +162,7 @@
 			children = (
 				5A9EAB5A2A57612200873B56 /* OpenVDB_to_Texture3D.app */,
 				5A875E822A5869E100B6253F /* OpenVDB_test */,
+				5A6E4BF22A65D408004D1218 /* OpenVDB_to_Texture3D copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,6 +189,10 @@
 		5A9EAB732A57634500873B56 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A6E4BF92A65D8F1004D1218 /* libblosc.a */,
+				5A6E4BF72A65D8D0004D1218 /* libboost_iostreams.a */,
+				5A6E4BF42A65D462004D1218 /* libopenvdb.a */,
+				5A6E4BF32A65D448004D1218 /* libtbb.a */,
 				5A33E2542A58B5D6009803C6 /* libtbb.12.9.dylib */,
 				5A33E24B2A588518009803C6 /* Foundation.framework */,
 				5A8764552A587C8A00B6253F /* libopenvdb.a */,
@@ -175,6 +205,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5A6E4BDC2A65D408004D1218 /* OpenVDB_to_Texture3D copy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A6E4BEF2A65D408004D1218 /* Build configuration list for PBXNativeTarget "OpenVDB_to_Texture3D copy" */;
+			buildPhases = (
+				5A6E4BDD2A65D408004D1218 /* Sources */,
+				5A6E4BE32A65D408004D1218 /* Frameworks */,
+				5A6E4BE72A65D408004D1218 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OpenVDB_to_Texture3D copy";
+			productName = OpenVDB_to_Texture3D;
+			productReference = 5A6E4BF22A65D408004D1218 /* OpenVDB_to_Texture3D copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		5A875E812A5869E100B6253F /* OpenVDB_test */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A875E862A5869E100B6253F /* Build configuration list for PBXNativeTarget "OpenVDB_test" */;
@@ -243,6 +290,7 @@
 			targets = (
 				5A9EAB592A57612200873B56 /* OpenVDB_to_Texture3D */,
 				5A875E812A5869E100B6253F /* OpenVDB_test */,
+				5A6E4BDC2A65D408004D1218 /* OpenVDB_to_Texture3D copy */,
 			);
 		};
 /* End PBXProject section */
@@ -254,6 +302,17 @@
 			files = (
 				5A33E24D2A588673009803C6 /* bunny_cloud.vdb in Resources */,
 				5A33E2532A58B2BF009803C6 /* cloud_01.vdb in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A6E4BE72A65D408004D1218 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A6E4BE82A65D408004D1218 /* bunny_cloud.vdb in Resources */,
+				5A6E4BE92A65D408004D1218 /* cloud_01.vdb in Resources */,
+				5A6E4BEA2A65D408004D1218 /* Assets.xcassets in Resources */,
+				5A6E4BEB2A65D408004D1218 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +330,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5A6E4BDD2A65D408004D1218 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A6E4BDE2A65D408004D1218 /* AppDelegate.m in Sources */,
+				5A6E4BDF2A65D408004D1218 /* ViewController.m in Sources */,
+				5A6E4BE02A65D408004D1218 /* main.m in Sources */,
+				5A6E4BE12A65D408004D1218 /* Renderer.mm in Sources */,
+				5A6E4BE22A65D408004D1218 /* Shaders.metal in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5A875F902A586AD700B6253F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -305,6 +376,101 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5A6E4BF02A65D408004D1218 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OpenVDB_to_Texture3D/OpenVDB_to_Texture3D.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CAB432FF98;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					/usr/local/lib/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/tbb/2021.9.0/lib/,
+					/usr/local/Cellar/openvdb/10.0.1_2/lib/,
+					/usr/local/Cellar/boost/1.82.0_1/lib,
+					"/usr/local/Cellar/c-blosc/1.21.3/lib",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					/usr/local/Cellar/openvdb/10.0.1_1/lib/libopenvdb.a,
+					"\"/usr/local/Cellar/c-blosc/1.21.3/lib/libblosc.a\"",
+					/usr/local/Cellar/tbb/2021.9.0/lib/libtbb.a,
+					/usr/local/Cellar/zlib/1.2.13/lib/libz.a,
+					/usr/local/Cellar/boost/1.81.0_1/lib/libboost_iostreams.a,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "QuintonQ.OpenVDB-to-Texture3D";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/openvdb/10.0.1_2/include,
+					/usr/local/Cellar/boost/1.82.0_1/include,
+					/usr/local/Cellar/tbb/2021.9.0/include,
+				);
+			};
+			name = Debug;
+		};
+		5A6E4BF12A65D408004D1218 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OpenVDB_to_Texture3D/OpenVDB_to_Texture3D.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CAB432FF98;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					/usr/local/lib/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/tbb/2021.9.0/lib/,
+					/usr/local/Cellar/openvdb/10.0.1_2/lib/,
+					/usr/local/Cellar/boost/1.82.0_1/lib,
+					"/usr/local/Cellar/c-blosc/1.21.3/lib",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					/usr/local/Cellar/openvdb/10.0.1_1/lib/libopenvdb.a,
+					"\"/usr/local/Cellar/c-blosc/1.21.3/lib/libblosc.a\"",
+					/usr/local/Cellar/tbb/2021.9.0/lib/libtbb.a,
+					/usr/local/Cellar/zlib/1.2.13/lib/libz.a,
+					/usr/local/Cellar/boost/1.81.0_1/lib/libboost_iostreams.a,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "QuintonQ.OpenVDB-to-Texture3D";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/openvdb/10.0.1_2/include,
+					/usr/local/Cellar/boost/1.82.0_1/include,
+					/usr/local/Cellar/tbb/2021.9.0/include,
+				);
+			};
+			name = Release;
+		};
 		5A875E872A5869E100B6253F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -316,7 +482,10 @@
 				DEVELOPMENT_TEAM = CAB432FF98;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = "";
-				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib/;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
 					/usr/local/Cellar/tbb/2021.9.0/lib,
@@ -324,8 +493,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYSTEM_HEADER_SEARCH_PATHS = (
-					/usr/local/Cellar/openvdb/10.0.1_1/include,
-					/usr/local/Cellar/boost/1.81.0_1/include,
+					/usr/local/Cellar/openvdb/10.0.1_2/include,
+					/usr/local/Cellar/boost/1.82.0_1/include,
 					/usr/local/Cellar/tbb/2021.9.0/include,
 				);
 				USER_HEADER_SEARCH_PATHS = "";
@@ -343,7 +512,10 @@
 				DEVELOPMENT_TEAM = CAB432FF98;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = "";
-				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib/;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
 					/usr/local/Cellar/tbb/2021.9.0/lib,
@@ -351,8 +523,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYSTEM_HEADER_SEARCH_PATHS = (
-					/usr/local/Cellar/openvdb/10.0.1_1/include,
-					/usr/local/Cellar/boost/1.81.0_1/include,
+					/usr/local/Cellar/openvdb/10.0.1_2/include,
+					/usr/local/Cellar/boost/1.82.0_1/include,
 					/usr/local/Cellar/tbb/2021.9.0/include,
 				);
 				USER_HEADER_SEARCH_PATHS = "";
@@ -553,6 +725,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5A6E4BEF2A65D408004D1218 /* Build configuration list for PBXNativeTarget "OpenVDB_to_Texture3D copy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A6E4BF02A65D408004D1218 /* Debug */,
+				5A6E4BF12A65D408004D1218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5A875E862A5869E100B6253F /* Build configuration list for PBXNativeTarget "OpenVDB_test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

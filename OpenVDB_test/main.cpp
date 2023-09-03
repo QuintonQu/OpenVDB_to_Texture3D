@@ -7,9 +7,10 @@
 
 #include <openvdb/openvdb.h>
 #import <Foundation/Foundation.h>
-
+#include <fstream>
 #include <iostream>
 #include <algorithm>
+#include "npy.hpp"
 
 int main(int argc, const char * argv[]) {
     openvdb::initialize();
@@ -65,6 +66,31 @@ int main(int argc, const char * argv[]) {
 //    std::cout << *std::max_element(values.begin(),values.end()) << std::endl;
 //    std::cout << *std::max_element(albedos.begin(),albedos.end()) << std::endl;
 //    std::cout << *std::min_element(albedos.begin(),albedos.end()) << std::endl;
+    
+    // Save values to .npy file
+//    std::ofstream outfile("values.npy", std::ios::binary);
+//    if (outfile.is_open()) {
+//        // Write header
+//        uint8_t header[11] = {0x93, 0x4E, 0x55, 0x4D, 0x50, 0x59, 0x01, 0x00, 0x20, 0x00, 0x00};
+//        outfile.write(reinterpret_cast<char*>(header), sizeof(header));
+//
+//        // Write shape
+//        uint32_t shape[2] = {static_cast<uint32_t>((bbox.max().x()-bbox.min().x())*(bbox.max().y()-bbox.min().y())*(bbox.max().z()-bbox.min().z())), 3};
+//        outfile.write(reinterpret_cast<char*>(shape), sizeof(shape));
+//
+//        // Write data
+//        outfile.write(reinterpret_cast<char*>(values.data()), values.size() * sizeof(float));
+//
+//        outfile.close();
+//        std::cout << "values saved to values.npy" << std::endl;
+//    } else {
+//        std::cerr << "Error: could not open values.npy for writing" << std::endl;
+//    }
+    
+    const std::vector<long unsigned> shape{static_cast<unsigned long>((bbox.max().x()-bbox.min().x())), static_cast<unsigned long>((bbox.max().y()-bbox.min().y())), static_cast<unsigned long>((bbox.max().z()-bbox.min().z()))};
+    const bool fortran_order{true};
+    const std::string path{"bunny.npy"};
+    npy::SaveArrayAsNumpy(path, fortran_order, shape.size(), shape.data(), values);
     
     return 0;
 }
